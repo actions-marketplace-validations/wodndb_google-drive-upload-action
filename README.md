@@ -1,6 +1,6 @@
 # Google Drive File Uploader
 
-Github action to upload a file to Google Drive using a service account.
+Github action to upload files to Google Drive using a service account.
 
 (Forked from https://github.com/willo32/google-drive-upload-action)
 
@@ -12,7 +12,7 @@ Github action to upload a file to Google Drive using a service account.
 steps:
     - uses: actions/checkout@v3
 
-    - name: Upload a files to Google Drive
+    - name: Upload files to Google Drive
       uses: wodndb/google-drive-upload-action@v1
       with:
         target: |-
@@ -27,7 +27,7 @@ steps:
 
 #### `target` (Required):
 
-Local path to the file to upload, can be relative from github runner current directory.
+Local path to the files to upload, can be relative from github runner current directory.
 
 #### `credentials` (Required):
 
@@ -39,15 +39,11 @@ Run `base64 my_service_account_key.json > encoded.txt` and paste the encoded str
 
 #### `parent_folder_id` (Required):
 
-The id of the drive folder where you want to upload your file. It is the string of characters after the last `/` when browsing to your folder URL. You must share the folder with the service account (using its email address) unless you specify a `owner`.
-
-#### `name` (Optional):
-
-The name of the file to be uploaded. Set to the `target` filename if not specified.
+The id of the drive folder where you want to upload your files. It is the string of characters after the last `/` when browsing to your folder URL. You must share the folder with the service account (using its email address) unless you specify a `owner`.
 
 #### `child_folder` (Optional):
 
-A sub-folder where to upload your file. It will be created if non-existent and must remain unique. Useful to organize your drive like so:
+A sub-folder where to upload your files. It will be created if non-existent and must remain unique. Useful to organize your drive like so:
 
 ```
 📂 Release // parent folder
@@ -62,3 +58,7 @@ A sub-folder where to upload your file. It will be created if non-existent and m
 #### `owner` (Optional):
 
 The email address of a user account that has access to the drive folder and will get the ownership of the file after its creation. To use this feature you must grant your service account a [domain-wide delegation of authority](https://developers.google.com/admin-sdk/directory/v1/guides/delegation) beforehand.
+
+## For developer
+
+- You should run `yarn build` and push build file before release.
